@@ -73,7 +73,7 @@
   const hdr = document.createElement('header');
   hdr.className = 'hdr';
   hdr.innerHTML = `<div class="wrap">
-    <a class="logo" href="index.html" aria-label="Kōsō, accueil">KŌSŌ<span class="sq" aria-hidden="true"></span><small aria-hidden="true">構想</small></a>
+    <a class="logo" href="index.html" aria-label="Kōsō, accueil">KŌSŌ<span class="sq" aria-hidden="true"></span></a>
     <nav class="nav" aria-label="Navigation principale">${NAV.map(([h, l, id]) => `<a href="${h}"${page === id ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav>
     <div class="hdr-r">
       <a class="tray-btn" href="contact.html#echantillons" hidden><span>Échantillons</span><b data-count>0</b></a>
@@ -105,7 +105,7 @@
       </div>
     </div>
     <div class="foot-wm" aria-hidden="true">KŌSŌ<span class="sq"></span></div>
-    <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — L'art de la matière</span><span>Carrelage · Pierre · Parquet · Bain · Robinetterie</span><span>構想 — la conception d'une vision</span></div>
+    <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — L'art du carreau</span><span>Carrelage · Pierre · Parquet · Bain · Robinetterie</span><span>Maison de matières</span></div>
   </div>`;
   document.body.append(foot);
 

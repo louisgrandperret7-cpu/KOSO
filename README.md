@@ -3,7 +3,7 @@
 Site statique (HTML, CSS, JavaScript, sans build) du magasin Kōsō : carrelage, pierre, parquet, salle de bain, robinetterie.
 
 ## Pages
-- `index.html` — accueil : héros « carreau par carreau », manifeste, univers, la maison (8 pièces), salle de bain, finitions, matières, accords, marques, showroom
+- `index.html` — accueil : héros en diaporama (la maison Kōsō), manifeste, univers, la maison (8 pièces), salle de bain, finitions, matières, accords, marques, showroom
 - `materiautheque.html` — 306 matières filtrables par teinte et par maison, fiche matière, sélection d'échantillons (8 max)
 - `marques.html` — 28 maisons par univers, fiche avec galerie et matières
 - `contact.html` — formulaire de projet (reprend les échantillons choisis)
@@ -21,6 +21,3 @@ Données associées : `js/data.js`.
 python3 -m http.server 8000
 ```
 puis ouvrir http://localhost:8000
-
-## Autre
-`portfolio/` — héros de portfolio autonome (« Creative Designer & Developer »), indépendant du site Kōsō.

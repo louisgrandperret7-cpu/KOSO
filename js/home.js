@@ -12,23 +12,25 @@
      1. Héros : la visite de la maison Kōsō en vidéo
         (une seule lecture, arrêt sur la dernière image)
      —————————————————————————————————————————————— */
-  const video = $('#heroVideo');
-  if (video) {
-    if (small()) $$('source', video).forEach(s => s.src = s.dataset.small);
-    video.loop = false;
-    video.load();
-    video.addEventListener('loadedmetadata', () => { video.currentTime = 0 }, { once: true });
-    if (D.reduced) video.autoplay = false;
-    else { const p = video.play(); p && p.catch && p.catch(err => console.warn('Lecture automatique bloquée par le navigateur :', err)) }
-    video.addEventListener('ended', () => console.log('Vidéo de la maison : dernière image atteinte.'));
-    /* Le nom de la pièce suit la vidéo (8 plans de 3,4 s, fondus de 0,9 s) */
-    const ROOMS = ['Extérieur', 'Entrée', 'Salon', 'Cuisine', 'Salle à manger', 'Salle de bain', 'Chambre', 'Terrasse'];
-    const rn = $('#room-name'); let last = 0;
-    video.addEventListener('timeupdate', () => {
-      const i = Math.max(0, Math.min(ROOMS.length - 1, Math.floor((video.currentTime - .45) / 2.5)));
-      if (i !== last) { last = i; rn.textContent = ROOMS[i] }
-    });
-  }
+  const slides = $$('#slides img'), rn = $('#room-name'), pb = $('#slides-pause');
+  let si = 0, st = null, sPaused = D.reduced;
+  const show = i => {
+    si = (i + slides.length) % slides.length;
+    const next = slides[si];
+    next.loading = 'eager';
+    slides.forEach(im => im.classList.toggle('is-on', im === next));
+    rn.textContent = next.dataset.room;
+    slides[(si + 1) % slides.length].loading = 'eager';
+  };
+  const run = () => { clearInterval(st); if (!sPaused) st = setInterval(() => show(si + 1), 4500) };
+  const setPaused = p => {
+    sPaused = p; run();
+    pb.setAttribute('aria-label', p ? 'Relancer le diaporama' : 'Mettre le diaporama en pause');
+    pb.innerHTML = `<i class="ph ${p ? 'ph-play' : 'ph-pause'}" aria-hidden="true"></i>`;
+  };
+  pb.addEventListener('click', () => setPaused(!sPaused));
+  document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(st) : run());
+  setPaused(sPaused);
   const soc = $('#social-links');
   if (soc) soc.innerHTML = D.SITE.socials.map(([n, ic, h]) => `<li><a href="${h || '#'}" aria-label="${n}"${h ? ' rel="noopener" target="_blank"' : ''}><i class="ph ${ic}" aria-hidden="true"></i></a></li>`).join('');
   if (G) gsap.to('.hero-content, .room-chip', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero-section', start: '35% top', end: 'bottom top', scrub: true } });

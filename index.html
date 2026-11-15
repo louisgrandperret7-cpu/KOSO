@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kōsō — L'art de la matière · Carrelage, pierre, parquet, salle de bain</title>
+<title>Kōsō — L'art du carreau · Carrelage, pierre, parquet, salle de bain</title>
 <meta name="description" content="Kōsō, maison de matières : carrelage, pierre, parquet, salle de bain et robinetterie de 28 maisons italiennes et européennes. Showroom et accompagnement de projet.">
 <meta name="theme-color" content="#1B1815">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kōsō">
-<meta property="og:title" content="Kōsō — L'art de la matière">
+<meta property="og:title" content="Kōsō — L'art du carreau">
 <meta property="og:description" content="Carrelage, pierre, parquet, salle de bain et robinetterie, composés comme une architecture intérieure.">
 <meta property="og:image" content="assets/img/tour/exterieur.jpg">
 <meta property="og:locale" content="fr_FR">
@@ -20,7 +20,7 @@
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Kōsō","alternateName":"KOSO","slogan":"L'art de la matière","description":"Carrelage, pierre, parquet, salle de bain, robinetterie et radiateurs : showroom et accompagnement de projet.","address":{"@type":"PostalAddress","streetAddress":"[À COMPLÉTER]","addressLocality":"[À COMPLÉTER]","addressCountry":"FR"},"telephone":"[À COMPLÉTER]"}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Kōsō","alternateName":"KOSO","slogan":"L'art du carreau","description":"Carrelage, pierre, parquet, salle de bain, robinetterie et radiateurs : showroom et accompagnement de projet.","address":{"@type":"PostalAddress","streetAddress":"[À COMPLÉTER]","addressLocality":"[À COMPLÉTER]","addressCountry":"FR"},"telephone":"[À COMPLÉTER]"}
 </script>
 </head>
 <body data-page="accueil" data-hdr="over">
@@ -29,20 +29,24 @@
 
   <!-- ——— Héros : la maison Kōsō en vidéo ——— -->
   <section class="hero-section" data-hero aria-labelledby="hero-t">
-    <div class="video-container" aria-hidden="true">
-      <video id="heroVideo" autoplay muted playsinline preload="auto" poster="assets/img/tour/exterieur.jpg">
-        <source src="assets/video/maison.webm" type="video/webm" data-small="assets/video/maison-s.webm">
-        <source src="assets/video/maison.mp4" type="video/mp4" data-small="assets/video/maison-s.mp4">
-      </video>
+    <div class="video-container slides" id="slides" aria-hidden="true">
+        <img src="assets/img/tour/exterieur.jpg" srcset="assets/img/tour/s-exterieur.jpg 960w, assets/img/tour/exterieur.jpg 1600w" sizes="100vw" alt="" data-room="Extérieur" class="is-on" decoding="async">
+        <img src="assets/img/tour/entree.jpg" srcset="assets/img/tour/s-entree.jpg 960w, assets/img/tour/entree.jpg 1600w" sizes="100vw" alt="" data-room="Entrée" loading="lazy" decoding="async">
+        <img src="assets/img/tour/salon.jpg" srcset="assets/img/tour/s-salon.jpg 960w, assets/img/tour/salon.jpg 1600w" sizes="100vw" alt="" data-room="Salon" loading="lazy" decoding="async">
+        <img src="assets/img/tour/cuisine.jpg" srcset="assets/img/tour/s-cuisine.jpg 960w, assets/img/tour/cuisine.jpg 1600w" sizes="100vw" alt="" data-room="Cuisine" loading="lazy" decoding="async">
+        <img src="assets/img/tour/salle-a-manger.jpg" srcset="assets/img/tour/s-salle-a-manger.jpg 960w, assets/img/tour/salle-a-manger.jpg 1600w" sizes="100vw" alt="" data-room="Salle à manger" loading="lazy" decoding="async">
+        <img src="assets/img/tour/salle-de-bain.jpg" srcset="assets/img/tour/s-salle-de-bain.jpg 960w, assets/img/tour/salle-de-bain.jpg 1600w" sizes="100vw" alt="" data-room="Salle de bain" loading="lazy" decoding="async">
+        <img src="assets/img/tour/chambre.jpg" srcset="assets/img/tour/s-chambre.jpg 960w, assets/img/tour/chambre.jpg 1600w" sizes="100vw" alt="" data-room="Chambre" loading="lazy" decoding="async">
+        <img src="assets/img/tour/terrasse.jpg" srcset="assets/img/tour/s-terrasse.jpg 960w, assets/img/tour/terrasse.jpg 1600w" sizes="100vw" alt="" data-room="Terrasse" loading="lazy" decoding="async">
       <div class="video-overlay"></div>
     </div>
 
-    <p class="room-chip animate-fade-up" style="animation-delay:.5s" aria-live="off"><span class="label">La maison Kōsō</span><b id="room-name">Extérieur</b></p>
+    <div class="room-chip animate-fade-up" style="animation-delay:.5s"><span class="label">La maison Kōsō</span><b id="room-name">Extérieur</b><button type="button" id="slides-pause" aria-label="Mettre le diaporama en pause"><i class="ph ph-pause" aria-hidden="true"></i></button></div>
 
     <div class="hero-content">
       <div class="text-wrapper">
-        <p class="greeting animate-fade-up" style="animation-delay:.1s">BIENVENUE CHEZ KŌSŌ · 構想</p>
-        <h1 id="hero-t" class="main-title animate-fade-up" style="animation-delay:.2s">L'art de la <em>matière</em><span class="sq" aria-hidden="true"></span></h1>
+        <p class="greeting animate-fade-up" style="animation-delay:.1s">BIENVENUE CHEZ KŌSŌ</p>
+        <h1 id="hero-t" class="main-title animate-fade-up" style="animation-delay:.2s">L'art du <em>carreau</em><span class="sq" aria-hidden="true"></span></h1>
         <p class="sub-title accent-text-gradient animate-fade-up" style="animation-delay:.3s">Carrelage, pierre, parquet &amp; salle de bain</p>
         <p class="description animate-fade-up" style="animation-delay:.3s">28 maisons européennes choisies pour leur matière et leur dessin, composées comme une architecture intérieure. Du sol au radiateur, un seul interlocuteur.</p>
         <div class="cta-group animate-fade-up" style="animation-delay:.5s">
@@ -81,7 +85,7 @@
   <section class="sec" id="manifeste" aria-labelledby="manif-t">
     <div class="wrap">
       <div class="manif">
-        <p class="manif-kanji rv" aria-hidden="true">構想<small>Kōsō — la conception d'une vision</small></p>
+        <p class="manif-kanji rv" aria-hidden="true">Kōsō<span class="sq"></span><small>Maison de matières</small></p>
         <div>
           <h2 id="manif-t" class="sr">Le manifeste</h2>
           <p class="manif-t" id="manif-text">Kōsō exprime l'idée d'une pensée qui prend forme : imaginer, composer et donner une âme aux espaces. Matières, lignes, lumière et objets s'accordent pour créer des intérieurs singuliers, intemporels et profondément personnels.</p>
