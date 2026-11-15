@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matériauthèque — 306 matières · Kōsō</title>
+<meta name="description" content="306 carrelages, pierres, mosaïques et parquets de Mirage, Mutina, 41zero42, FAP, Sant'Agostino, WOW, Cerasarda et Listone Giordano, filtrables par teinte et par maison.">
+<meta name="theme-color" content="#F2EEE7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B1815'/%3E%3Crect x='19' y='19' width='7' height='7' fill='%23E2361B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="materiautheque">
+<main id="main" tabindex="-1">
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="crumbs label"><a href="index.html">Kōsō</a><span aria-hidden="true">/</span><span>Matériauthèque</span></p>
+      <div class="row">
+        <h1 class="display h-1" data-split>La matériauthèque<span class="sq" aria-hidden="true"></span></h1>
+        <p class="lede rv">306 carrelages, pierres, mosaïques et parquets. Filtrez par teinte ou par maison, ouvrez une matière, ajoutez-la à vos échantillons : jusqu'à 8 par demande.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="mt-bar">
+    <div class="wrap">
+      <div class="mt-r">
+        <label class="search"><span class="sr">Rechercher une matière</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input type="search" id="q" placeholder="Collection, maison, teinte…" autocomplete="off">
+        </label>
+        <div class="seg" role="group" aria-label="Affichage">
+          <button type="button" aria-pressed="true" data-view="grid">Grille</button>
+          <button type="button" aria-pressed="false" data-view="dense">Nuancier</button>
+        </div>
+        <p class="mt-count label label--muted" id="count" aria-live="polite"></p>
+      </div>
+      <div class="chips" id="fams" role="group" aria-label="Filtrer par teinte"></div>
+      <div class="chips" id="brands" role="group" aria-label="Filtrer par maison"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="mt-grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <p class="display h-3">Aucune matière ne correspond.</p>
+      <button class="btn" type="button" id="reset">Effacer les filtres</button>
+    </div>
+  </div>
+</main>
+
+<dialog class="dlg" id="dlg" aria-labelledby="dlg-t">
+  <div class="dlg-in" id="dlg-in"></div>
+</dialog>
+
+<div class="tray" id="tray" aria-label="Échantillons sélectionnés">
+  <div class="wrap">
+    <p class="label" id="tray-n"></p>
+    <div class="tray-list" id="tray-list"></div>
+    <a class="btn btn--light btn--sm" href="contact.html?type=echantillon#echantillons">Demander <span class="arr">→</span></a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/materiautheque.js"></script>
+</body>
+</html>
