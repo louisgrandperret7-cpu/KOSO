@@ -72,7 +72,7 @@
       <p class="label" style="color:var(--signal-ink)">Demande prête</p>
       <p class="display h-2">Merci, ${esc($('#name').value.split(' ')[0])}.</p>
       <p class="lede">${to ? 'Votre messagerie s’ouvre avec la demande pré-remplie : il ne reste qu’à l’envoyer. Nous revenons vers vous sous 48 h ouvrées.' : 'Nous revenons vers vous sous 48 h ouvrées.'}</p>
-      ${to ? '' : '<p class="ph" style="white-space:normal;display:inline-block">Envoi à configurer : renseignez emailHref dans js/main.js (ou branchez un service de formulaire dans js/contact.js).</p>'}
+      ${to ? '' : '<p class="todo" style="white-space:normal;display:inline-block">Envoi à configurer : renseignez emailHref dans js/main.js (ou branchez un service de formulaire dans js/contact.js).</p>'}
       <p><a class="btn" href="index.html">Retour à l’accueil</a></p></div>`;
     $('.form-done', form).focus();
   });

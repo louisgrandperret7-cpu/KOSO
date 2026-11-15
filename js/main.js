@@ -18,6 +18,8 @@
     emailHref: '',                 // ex. 'contact@koso.fr' : active l'envoi du formulaire
     instagram: '[Compte Instagram]',
     instagramHref: '',
+    /* Réseaux affichés dans le héros : [nom, icône Phosphor, lien] */
+    socials: [['Instagram', 'ph-instagram-logo', ''], ['Pinterest', 'ph-pinterest-logo', ''], ['Facebook', 'ph-facebook-logo', '']],
     hours: [['Lundi', '[Horaires]'], ['Mardi — Vendredi', '[Horaires]'], ['Samedi', '[Horaires]'], ['Dimanche', 'Fermé']]
   };
 
@@ -34,7 +36,7 @@
     `<img src="assets/img/g/${f}" srcset="assets/img/g/s-${f} 800w, assets/img/g/${f} 1345w" sizes="${sizes}" alt="${D.esc(alt)}" loading="lazy" decoding="async" ${extra}>`;
   D.brand = id => (D.brands || []).find(b => b.id === id);
 
-  const ph = v => /^\[.*\]$/.test(v) ? `<span class="ph">${D.esc(v)}</span>` : D.esc(v);
+  const ph = v => /^\[.*\]$/.test(v) ? `<span class="todo">${D.esc(v)}</span>` : D.esc(v);
   D.ph = ph;
 
   /* ——— Échantillons (mémorisés sur cet appareil) ——— */

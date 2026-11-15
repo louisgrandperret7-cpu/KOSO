@@ -9,98 +9,29 @@
   const cap = f => { for (const [id, list] of Object.entries(D.gallery)) { const g = list.find(x => x.f === f); if (g) return `${D.brand(id)?.name || id} — ${g.c}` } return '' };
 
   /* ——————————————————————————————————————————————
-     1. Héros : l'image se pose carreau par carreau
+     1. Héros : la visite de la maison Kōsō en vidéo
+        (une seule lecture, arrêt sur la dernière image)
      —————————————————————————————————————————————— */
-  const SLIDES = ['mirage-1.jpg', 'listone-giordano-2.jpg', 'fap-2.jpg', 'wow-1.jpg', 'mirage-3.jpg'];
-  const tilesEl = $('#tiles'), capEl = $('#hero-cap'), progEl = $('#hero-prog'), pauseBtn = $('#hero-pause');
-  const preload = {};
-  const src = f => `assets/img/g/${small() ? 's-' : ''}${f}`;
-  const load = f => preload[f] || (preload[f] = new Promise(res => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src(f) }));
-  let tiles = [], cur = 0, timer = null, paused = D.reduced, dims = null;
-
-  progEl.innerHTML = SLIDES.map(() => '<span><i></i></span>').join('');
-  const bars = $$('i', progEl);
-
-  function build() {
-    const W = tilesEl.clientWidth, H = tilesEl.clientHeight;
-    const size = W < 760 ? 74 : W < 1200 ? 110 : 132;
-    const cols = Math.max(4, Math.round(W / size)), rows = Math.max(5, Math.round(H / size));
-    tilesEl.style.setProperty('--cols', cols); tilesEl.style.setProperty('--rows', rows);
-    tilesEl.style.setProperty('--joint', '2px');
-    tilesEl.innerHTML = '<div class="tile"></div>'.repeat(cols * rows);
-    tiles = $$('.tile', tilesEl).map((el, k) => ({ el, c: k % cols, r: Math.floor(k / cols) }));
-    dims = { W, H, cols, rows };
-    paint(SLIDES[cur], true);
-  }
-  function geo(img) {
-    const { W, H } = dims, s = Math.max(W / img.naturalWidth, H / img.naturalHeight);
-    return { bw: img.naturalWidth * s, bh: img.naturalHeight * s, ox: (img.naturalWidth * s - W) / 2, oy: (img.naturalHeight * s - H) / 2 };
-  }
-  function layer(t, f, g) {
-    const i = document.createElement('i');
-    i.style.backgroundImage = `url("${src(f)}")`;
-    i.style.setProperty('--bw', g.bw + 'px'); i.style.setProperty('--bh', g.bh + 'px');
-    i.style.backgroundPosition = `${-(t.el.offsetLeft + g.ox)}px ${-(t.el.offsetTop + g.oy)}px`;
-    t.el.append(i); return i;
-  }
-  async function paint(f, instant) {
-    const img = await load(f); if (!img) return;
-    const g = geo(img);
-    const layers = tiles.map(t => layer(t, f, g));
-    capEl.textContent = cap(f);
-    if (instant || !G) { tiles.forEach(t => { while (t.el.children.length > 1) t.el.firstChild.remove() }); return }
-    const { cols, rows } = dims, cx = (cols - 1) / 2, cy = (rows - 1) / 2;
-    const order = tiles.map(t => Math.hypot(t.c - cx, (t.r - cy) * 1.2) + Math.random() * .9);
-    const mx = Math.max(...order);
-    gsap.fromTo(layers, { opacity: 0, scale: .4, rotate: () => (Math.random() - .5) * 20 }, {
-      opacity: 1, scale: 1, rotate: 0, duration: .9, ease: 'expo.out',
-      delay: i => order[i] / mx * 1.1,
-      onComplete() { tiles.forEach(t => { while (t.el.children.length > 1) t.el.firstChild.remove() }) }
+  const video = $('#heroVideo');
+  if (video) {
+    if (small()) $$('source', video).forEach(s => s.src = s.dataset.small);
+    video.loop = false;
+    video.load();
+    video.addEventListener('loadedmetadata', () => { video.currentTime = 0 }, { once: true });
+    if (D.reduced) video.autoplay = false;
+    else { const p = video.play(); p && p.catch && p.catch(err => console.warn('Lecture automatique bloquée par le navigateur :', err)) }
+    video.addEventListener('ended', () => console.log('Vidéo de la maison : dernière image atteinte.'));
+    /* Le nom de la pièce suit la vidéo (8 plans de 3,4 s, fondus de 0,9 s) */
+    const ROOMS = ['Extérieur', 'Entrée', 'Salon', 'Cuisine', 'Salle à manger', 'Salle de bain', 'Chambre', 'Terrasse'];
+    const rn = $('#room-name'); let last = 0;
+    video.addEventListener('timeupdate', () => {
+      const i = Math.max(0, Math.min(ROOMS.length - 1, Math.floor((video.currentTime - .45) / 2.5)));
+      if (i !== last) { last = i; rn.textContent = ROOMS[i] }
     });
   }
-  function go(n) {
-    cur = (n + SLIDES.length) % SLIDES.length;
-    paint(SLIDES[cur]);
-    load(SLIDES[(cur + 1) % SLIDES.length]);
-    tick();
-  }
-  function tick() {
-    clearTimeout(timer);
-    bars.forEach((b, i) => { b.style.transition = 'none'; b.style.transform = `scaleX(${i < cur ? 1 : 0})` });
-    if (paused) return;
-    const b = bars[cur]; void b.offsetWidth;
-    b.style.transition = 'transform 6.5s linear'; b.style.transform = 'scaleX(1)';
-    timer = setTimeout(() => go(cur + 1), 6500);
-  }
-  pauseBtn.addEventListener('click', () => {
-    paused = !paused;
-    pauseBtn.setAttribute('aria-label', paused ? 'Relancer le diaporama' : 'Mettre le diaporama en pause');
-    pauseBtn.innerHTML = paused
-      ? '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>'
-      : '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3.2" height="12"/><rect x="9.8" y="2" width="3.2" height="12"/></svg>';
-    tick();
-  });
-  if (D.reduced) { paused = false; pauseBtn.click() } // mouvement réduit : diaporama à l'arrêt
-  document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else tick() });
-
-  build();
-  let rw = innerWidth;
-  addEventListener('resize', () => { if (Math.abs(innerWidth - rw) < 40) return; rw = innerWidth; clearTimeout(build._t); build._t = setTimeout(build, 200) });
-
-  /* Entrée : les mots du titre montent, puis le diaporama démarre */
-  const title = $('[data-hero-title]');
-  if (G) {
-    const ws = D.split(title);
-    const tl = gsap.timeline({ delay: .2 });
-    tl.from(tiles.map(t => t.el), { opacity: 0, scale: .6, duration: 1, ease: 'expo.out', stagger: { each: .006, from: 'center', grid: [dims.rows, dims.cols] } })
-      .from(ws, { yPercent: 115, duration: 1.2, ease: 'expo.out', stagger: .07 }, .45)
-      .from('.hero-in .lede, .hero-in .label, .hero-ctas .btn, .hero-meta .wrap > *', { opacity: 0, y: 18, duration: .9, ease: 'expo.out', stagger: .06 }, .8)
-      .add(tick, 1.2);
-    /* Au scroll, les joints s'ouvrent : le carrelage se « décolle » */
-    gsap.to(tilesEl, { '--joint': '14px', scale: 1.06, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.to('.hero-in .wrap', { y: -80, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: 'bottom top', scrub: true } });
-  } else tick();
-  load(SLIDES[1]);
+  const soc = $('#social-links');
+  if (soc) soc.innerHTML = D.SITE.socials.map(([n, ic, h]) => `<li><a href="${h || '#'}" aria-label="${n}"${h ? ' rel="noopener" target="_blank"' : ''}><i class="ph ${ic}" aria-hidden="true"></i></a></li>`).join('');
+  if (G) gsap.to('.hero-content, .room-chip', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero-section', start: '35% top', end: 'bottom top', scrub: true } });
 
   /* ——————————————————————————————————————————————
      2. Manifeste : les mots s'allument au fil du scroll
