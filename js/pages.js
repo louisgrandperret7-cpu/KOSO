@@ -34,13 +34,12 @@
         <header class="bgroup-h"><h2 id="g-${all.length}" class="display h-2">${esc(g.t)}</h2><p class="lede">${esc(g.l)}</p></header>`;
       withPh.forEach(id => {
         const b = D.brand(id), P = photos(id), L = LAYOUT[P.length];
-        const n = D.textures.filter(t => t.b === id).length;
         all.push(id);
         html += `<article class="bsec" id="${id}" aria-labelledby="h-${id}">
           <div class="bsec-h">
             <div><h3 id="h-${id}">${esc(b.name)}<span class="sq" aria-hidden="true"></span></h3><p class="label label--muted">${esc(b.origin)}</p></div>
             <p class="copy">${esc(b.line)}</p>
-            <p class="bsec-a">${n ? `<a class="link" href="materiautheque.html?marque=${id}">Voir les ${n} matières <span class="arr">→</span></a>` : ''}<a class="link" href="contact.html?marque=${id}">Voir au showroom <span class="arr">→</span></a></p>
+            <p class="bsec-a"><a class="link" href="contact.html?marque=${id}">Voir au showroom <span class="arr">→</span></a></p>
           </div>
           <div class="mosaic">${P.map((p, i) => `<button type="button" class="m ${L[i] ? 'm-' + L[i] : ''} rv" data-d="${(i * .05).toFixed(2)}" data-b="${id}" data-i="${i}" aria-label="Agrandir : ${esc(b.name)} — ${esc(p.c)}">
               <img src="assets/img/${i === 0 || L[i] ? p.s : p.m}" ${p.s.startsWith('g/') ? `srcset="assets/img/${p.m} 800w, assets/img/${p.s} 1345w" sizes="${i === 0 ? '(min-width:900px) 50vw, 100vw' : '(min-width:900px) 25vw, 50vw'}"` : ''} alt="" loading="lazy" decoding="async">
@@ -51,6 +50,10 @@
       html += '</section>';
     });
     root.innerHTML = html;
+    const cx = $('#carreaux-grid');
+    if (cx) cx.innerHTML = D.carreaux.map((c, i) => `<figure class="cx rv" data-d="${(i % 4 * .05).toFixed(2)}">
+        <div class="cx-m"><img src="assets/img/textures/${esc(c.f)}" alt="Carreau ${esc(c.n)}, ${esc(D.brand(c.b).name)}" loading="lazy" decoding="async"></div>
+        <figcaption><b>${esc(c.n)}</b><span class="label label--muted">${esc(D.brand(c.b).name)}</span></figcaption></figure>`).join('');
     jump.innerHTML = all.map(id => `<a class="chip-f no-dot" href="#${id}">${esc(D.brand(id).name)}</a>`).join('');
 
     /* ——— Visionneuse ——— */

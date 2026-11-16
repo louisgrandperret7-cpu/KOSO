@@ -8,7 +8,6 @@ Site statique (HTML, CSS, JavaScript, sans build) du magasin Kōsō : carrelage,
 - `salle-de-bain.html` — meubles, vasques, baignoires, receveurs, parois, robinetterie, sèche-serviettes
 - `showroom.html` — photos, adresse et horaires
 - `contact.html` — formulaire de projet
-- `materiautheque.html` — les 306 matières (accessible depuis la page Carrelage)
 
 ## Photos du showroom
 Déposer les photos dans `assets/img/showroom/` sous les noms `showroom-1.jpg` à `showroom-6.jpg` (la 1 est la grande). Elles remplacent automatiquement les emplacements.

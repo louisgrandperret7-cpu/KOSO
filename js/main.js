@@ -96,7 +96,6 @@
     <a class="logo" href="index.html" aria-label="Kōsō, accueil">KŌSŌ<span class="sq" aria-hidden="true"></span></a>
     <nav class="nav" aria-label="Navigation principale">${NAV.map(([h, l, id]) => `<a href="${h}"${page === id ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav>
     <div class="hdr-r">
-      <a class="tray-btn" href="contact.html#echantillons" hidden><span>Échantillons</span><b data-count>0</b></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span>Menu</span></button>
     </div></div>`;
   const menu = document.createElement('div');
@@ -149,9 +148,6 @@
   };
 
   /* ——— Compteur d'échantillons dans l'en-tête ——— */
-  const trayBtn = D.$('.tray-btn', hdr);
-  const syncCount = () => { const n = samples.length; trayBtn.hidden = !n; D.$('[data-count]', trayBtn).textContent = n; trayBtn.setAttribute('aria-label', `${n} échantillon${n > 1 ? 's' : ''} sélectionné${n > 1 ? 's' : ''}`) };
-  document.addEventListener('samples', syncCount); syncCount();
 
   /* ——— Menu mobile ——— */
   const mbtn = D.$('.menu-btn', hdr);
