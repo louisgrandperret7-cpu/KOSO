@@ -19,7 +19,7 @@
     instagram: '[Compte Instagram]',
     instagramHref: '',
     /* Réseaux affichés dans le héros : [nom, icône Phosphor, lien] */
-    socials: [['Instagram', 'ph-instagram-logo', ''], ['Pinterest', 'ph-pinterest-logo', ''], ['Facebook', 'ph-facebook-logo', '']],
+    socials: [['Instagram', 'instagram', ''], ['Facebook', 'facebook', ''], ['Pinterest', 'pinterest', '']],
     hours: [['Lundi', '[Horaires]'], ['Mardi — Vendredi', '[Horaires]'], ['Samedi', '[Horaires]'], ['Dimanche', 'Fermé']]
   };
 
@@ -61,12 +61,32 @@
   /* ——— Gabarits partagés ——— */
   const page = document.body.dataset.page || '';
   const NAV = [
-    ['materiautheque.html', 'Matériauthèque', 'materiautheque', '306 matières'],
-    ['marques.html', 'Marques', 'marques', '28 maisons'],
-    ['index.html#maison', 'La maison', 'maison', 'Visite'],
-    ['index.html#salle-de-bain', 'Salle de bain', 'bain', 'Ambiances'],
-    ['index.html#showroom', 'Showroom', 'showroom', 'Venir']
+    ['carrelage.html', 'Carrelage', 'carrelage', 'Sols & murs'],
+    ['salle-de-bain.html', 'Salle de bain', 'bain', 'Meubles, douches, baignoires'],
+    ['showroom.html', 'Showroom', 'showroom', 'Horaires & adresse'],
+    ['contact.html', 'Contact', 'contact', 'Votre projet']
   ];
+  /* Icônes dessinées dans la page (aucune bibliothèque externe) */
+  const ic = (d, fill) => `<svg viewBox="0 0 24 24" width="1em" height="1em" ${fill ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${d}</svg>`;
+  D.SVG = {
+    instagram: ic('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>'),
+    facebook: ic('<path d="M13.6 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.6 1.6-1.6h1.7V3.9a22 22 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3v2.3H7.5v3.2h2.7v8h3.4z"/>', true),
+    pinterest: ic('<path d="M12 2a10 10 0 0 0-3.64 19.31c-.09-.79-.17-2 .03-2.86l1.18-5s-.3-.6-.3-1.49c0-1.4.81-2.44 1.82-2.44.86 0 1.27.64 1.27 1.41 0 .86-.55 2.15-.83 3.34-.24 1 .5 1.81 1.48 1.81 1.78 0 3.15-1.88 3.15-4.59 0-2.4-1.73-4.08-4.19-4.08-2.85 0-4.53 2.14-4.53 4.35 0 .86.33 1.79.75 2.29.08.1.09.19.07.29l-.28 1.14c-.04.18-.15.22-.34.13-1.25-.58-2.03-2.41-2.03-3.88 0-3.16 2.3-6.06 6.62-6.06 3.47 0 6.17 2.47 6.17 5.78 0 3.45-2.17 6.22-5.19 6.22-1.01 0-1.97-.53-2.29-1.15l-.62 2.38c-.23.87-.84 1.96-1.25 2.62A10 10 0 1 0 12 2z"/>', true),
+    arrow: ic('<path d="M5 12h14M13 6l6 6-6 6"/>'),
+    arrowUp: ic('<path d="M7 17L17 7M8 7h9v9"/>'),
+    calendar: ic('<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
+    pause: ic('<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>', true),
+    play: ic('<path d="M7 4.5v15l12.5-7.5z"/>', true),
+    pin: ic('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'),
+    clock: ic('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
+    phone: ic('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
+    x: ic('<path d="M6 6l12 12M18 6L6 18"/>'),
+    left: ic('<path d="M15 5l-7 7 7 7"/>'),
+    right: ic('<path d="M9 5l7 7-7 7"/>')
+  };
+  /* [data-ic="nom"] dans le HTML reçoit l'icône correspondante */
+  const fillIcons = (root = document) => root.querySelectorAll('[data-ic]').forEach(el => { el.innerHTML = D.SVG[el.dataset.ic] || ''; el.setAttribute('aria-hidden', 'true') });
+  D.fillIcons = fillIcons;
   const X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>';
   D.ICON_X = X;
 
@@ -77,13 +97,12 @@
     <nav class="nav" aria-label="Navigation principale">${NAV.map(([h, l, id]) => `<a href="${h}"${page === id ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav>
     <div class="hdr-r">
       <a class="tray-btn" href="contact.html#echantillons" hidden><span>Échantillons</span><b data-count>0</b></a>
-      <a class="btn btn--sm" href="contact.html"${page === 'contact' ? ' aria-current="page"' : ''}>Votre projet <span class="sq" aria-hidden="true"></span></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span>Menu</span></button>
     </div></div>`;
   const menu = document.createElement('div');
   menu.className = 'menu'; menu.id = 'menu';
   menu.setAttribute('role', 'dialog'); menu.setAttribute('aria-modal', 'true'); menu.setAttribute('aria-label', 'Menu');
-  menu.innerHTML = `<nav aria-label="Menu mobile">${[['index.html', 'Accueil', 'accueil', 'Kōsō'], ...NAV, ['contact.html', 'Contact', 'contact', 'Votre projet']].map(([h, l, id, n]) => `<a href="${h}"${page === id ? ' aria-current="page"' : ''}>${l}<span>${n}</span></a>`).join('')}</nav>
+  menu.innerHTML = `<nav aria-label="Menu mobile">${[['index.html', 'Accueil', 'accueil', 'Kōsō'], ...NAV].map(([h, l, id, n]) => `<a href="${h}"${page === id ? ' aria-current="page"' : ''}>${l}<span>${n}</span></a>`).join('')}</nav>
     <div class="menu-foot"><span class="label" style="color:var(--bone)">Showroom</span><span>${ph(D.SITE.address)}</span><span>${ph(D.SITE.city)}</span><span>${ph(D.SITE.phone)}</span></div>`;
   document.body.prepend(menu);
   document.body.prepend(hdr);
@@ -96,12 +115,12 @@
     <div class="foot-top">
       <p class="foot-lead">Toucher la matière <em>avant</em> de choisir.</p>
       <div class="foot-cols">
-        <div><span class="label">Showroom</span><ul><li>${ph(D.SITE.address)}</li><li>${ph(D.SITE.city)}</li><li><a href="index.html#showroom">Horaires &amp; accès</a></li></ul></div>
+        <div><span class="label">Showroom</span><ul><li>${ph(D.SITE.address)}</li><li>${ph(D.SITE.city)}</li><li><a href="showroom.html">Horaires &amp; accès</a></li></ul></div>
         <div><span class="label">Contact</span><ul>
           <li>${D.SITE.phoneHref ? `<a href="tel:${D.SITE.phoneHref}">${D.esc(D.SITE.phone)}</a>` : ph(D.SITE.phone)}</li>
           <li>${D.SITE.emailHref ? `<a href="mailto:${D.SITE.emailHref}">${D.esc(D.SITE.email)}</a>` : ph(D.SITE.email)}</li>
           <li>${D.SITE.instagramHref ? `<a href="${D.SITE.instagramHref}" rel="noopener">${D.esc(D.SITE.instagram)}</a>` : ph(D.SITE.instagram)}</li></ul></div>
-        <div><span class="label">Explorer</span><ul>${NAV.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join('')}<li><a href="contact.html">Contact</a></li></ul></div>
+        <div><span class="label">Explorer</span><ul>${NAV.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join('')}</ul></div>
       </div>
     </div>
     <div class="foot-wm" aria-hidden="true">KŌSŌ<span class="sq"></span></div>
@@ -235,6 +254,7 @@
   /* Les pages appellent KOSO.ready(fn) une fois les gabarits en place */
   D.ready = fn => (document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn());
   D.ready(() => {
+    fillIcons();
     D.reveal();
     addEventListener('load', () => hasG && ScrollTrigger.refresh());
   });

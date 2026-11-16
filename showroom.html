@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Showroom · Kōsō</title>
+<meta name="description" content="Le showroom Kōsō : photos, horaires d'ouverture et adresse. Venez voir carrelage, pierre et salle de bain en grand.">
+<meta name="theme-color" content="#F2EEE7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B1815'/%3E%3Crect x='19' y='19' width='7' height='7' fill='%23E2361B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="showroom">
+<main id="main" tabindex="-1">
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="crumbs label"><a href="index.html">Kōsō</a><span aria-hidden="true">/</span><span>Showroom</span></p>
+      <div class="row">
+        <h1 class="display h-1" data-split>Le <em>showroom</em><span class="sq" aria-hidden="true"></span></h1>
+        <p class="lede rv">Les collections posées en grand, la robinetterie en eau, une table pour travailler votre projet. Venez toucher la matière avant de choisir.</p>
+      </div>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="sr-photos" id="sr-photos"></div>
+    <div class="sr-info">
+      <div class="sr-card">
+        <p class="label label--muted"><span data-ic="pin"></span> Adresse</p>
+        <p class="sr-big"><span data-site="address"></span><br><span data-site="city"></span></p>
+        <p class="label label--muted" style="margin-top:28px"><span data-ic="phone"></span> Téléphone</p>
+        <p style="font-size:18px" data-site="phone"></p>
+        <p class="label label--muted" style="margin-top:20px">E-mail</p>
+        <p style="font-size:18px" data-site="email"></p>
+      </div>
+      <div class="sr-card">
+        <p class="label label--muted"><span data-ic="clock"></span> Horaires</p>
+        <div class="hours" data-site="hours" style="margin-top:14px"></div>
+        <p class="copy" style="margin-top:20px">En visite libre aux heures d'ouverture, ou sur rendez-vous pour un projet complet : comptez une heure autour de la table de projet.</p>
+        <p style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn--solid" href="contact.html?type=rdv">Prendre rendez-vous <span data-ic="calendar"></span></a></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carrelage · Kōsō</title>
+<meta name="description" content="Les marques de carrelage, pierre, terre cuite et mosaïque du showroom Kōsō : Mirage, Mutina, 41zero42, FAP, Sant'Agostino, WOW, Cerasarda…">
+<meta name="theme-color" content="#F2EEE7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B1815'/%3E%3Crect x='19' y='19' width='7' height='7' fill='%23E2361B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="carrelage">
+<main id="main" tabindex="-1">
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="crumbs label"><a href="index.html">Kōsō</a><span aria-hidden="true">/</span><span>Carrelage</span></p>
+      <div class="row">
+        <h1 class="display h-1" data-split>Le <em>carrelage</em><span class="sq" aria-hidden="true"></span></h1>
+        <div class="rv"><p class="lede">Grès cérame, zelliges, terre cuite et pierre : les maisons que nous distribuons, en cinq images chacune. Cliquez sur une photo pour l'agrandir.</p><p style="margin-top:22px"><a class="btn btn--solid" href="materiautheque.html">Toutes les matières (306) <span data-ic="arrow"></span></a></p></div>
+      </div>
+      <nav class="chips jump" id="jump" aria-label="Aller à une marque"></nav>
+    </div>
+  </header>
+  <div class="wrap" id="brands"></div>
+  <section class="cta" aria-labelledby="cta-t">
+    <div class="wrap">
+      <p class="label">Votre projet</p>
+      <h2 id="cta-t" class="display h-1" data-split>Venez voir <em>en vrai.</em></h2>
+      <p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="contact.html?type=rdv">Prendre rendez-vous <span data-ic="calendar"></span></a><a class="btn" href="showroom.html">Horaires &amp; adresse</a></p>
+    </div>
+  </section>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Photo agrandie">
+  <figure class="lb-in">
+    <img id="lb-img" src="" alt="">
+    <figcaption><span id="lb-cap"></span><span id="lb-n" class="label"></span></figcaption>
+  </figure>
+  <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Photo précédente"><span data-ic="left"></span></button>
+  <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Photo suivante"><span data-ic="right"></span></button>
+  <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Fermer"><span data-ic="x"></span></button>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>

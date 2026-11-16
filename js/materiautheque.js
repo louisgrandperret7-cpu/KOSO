@@ -99,7 +99,7 @@
           <dl class="dl">
             <dt>Teinte</dt><dd><span class="swatch-color"><i style="background:${t.c}" aria-hidden="true"></i>${esc(t.t)} · <span class="label label--muted" style="font-size:11px">${t.c}</span></span></dd>
             <dt>Famille</dt><dd>${esc(fam.name)}</dd>
-            <dt>Maison</dt><dd><a href="marques.html#${t.b}" style="text-decoration:underline;text-underline-offset:3px">${esc(t.bn)}</a></dd>
+            <dt>Maison</dt><dd><a href="carrelage.html#${t.b}" style="text-decoration:underline;text-underline-offset:3px">${esc(t.bn)}</a></dd>
             <dt>Formats</dt><dd>Sur demande au showroom</dd>
           </dl>
           <div class="dlg-acts">

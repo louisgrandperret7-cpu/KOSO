@@ -3,10 +3,15 @@
 Site statique (HTML, CSS, JavaScript, sans build) du magasin Kōsō : carrelage, pierre, parquet, salle de bain, robinetterie.
 
 ## Pages
-- `index.html` — accueil : héros en diaporama (la maison Kōsō), manifeste, univers, la maison (8 pièces), salle de bain, finitions, matières, accords, marques, showroom
-- `materiautheque.html` — 306 matières filtrables par teinte et par maison, fiche matière, sélection d'échantillons (8 max)
-- `marques.html` — 28 maisons par univers, fiche avec galerie et matières
-- `contact.html` — formulaire de projet (reprend les échantillons choisis)
+- `index.html` — accueil : héros en diaporama, présentation et chiffres clés
+- `carrelage.html` — les marques de carrelage, pierre et mosaïque, 5 photos par marque (visionneuse au clic)
+- `salle-de-bain.html` — meubles, vasques, baignoires, receveurs, parois, robinetterie, sèche-serviettes
+- `showroom.html` — photos, adresse et horaires
+- `contact.html` — formulaire de projet
+- `materiautheque.html` — les 306 matières (accessible depuis la page Carrelage)
+
+## Photos du showroom
+Déposer les photos dans `assets/img/showroom/` sous les noms `showroom-1.jpg` à `showroom-6.jpg` (la 1 est la grande). Elles remplacent automatiquement les emplacements.
 
 ## À compléter
 Coordonnées, horaires et e-mail : un seul endroit, `D.SITE` en haut de `js/main.js`.
