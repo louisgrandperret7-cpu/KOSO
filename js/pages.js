@@ -42,7 +42,7 @@
             <p class="bsec-a"><a class="link" href="contact.html?marque=${id}">Voir au showroom <span class="arr">→</span></a></p>
           </div>
           <div class="mosaic">${P.map((p, i) => `<button type="button" class="m ${L[i] ? 'm-' + L[i] : ''} rv" data-d="${(i * .05).toFixed(2)}" data-b="${id}" data-i="${i}" aria-label="Agrandir : ${esc(b.name)} — ${esc(p.c)}">
-              <img src="assets/img/${i === 0 || L[i] ? p.s : p.m}" ${p.s.startsWith('g/') ? `srcset="assets/img/${p.m} 800w, assets/img/${p.s} 1345w" sizes="${i === 0 ? '(min-width:900px) 50vw, 100vw' : '(min-width:900px) 25vw, 50vw'}"` : ''} alt="" loading="lazy" decoding="async">
+              <img src="assets/img/${i === 0 || L[i] ? p.s : p.m}" ${p.s.startsWith('g/') ? `srcset="assets/img/${p.m} 800w, assets/img/${p.s} 2400w" sizes="${i === 0 ? '(min-width:900px) 50vw, 100vw' : '(min-width:900px) 25vw, 50vw'}"` : ''} alt="" loading="lazy" decoding="async">
               <span class="m-c">${esc(p.c)}</span></button>`).join('')}</div>
         </article>`;
       });
