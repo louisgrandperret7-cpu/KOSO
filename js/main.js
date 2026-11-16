@@ -112,7 +112,7 @@
   foot.className = 'foot';
   foot.innerHTML = `<div class="wrap">
     <div class="foot-top">
-      <p class="foot-lead">Toucher la matière <em>avant</em> de choisir.</p>
+      <p class="foot-lead">Toucher les finitions <em>avant</em> de choisir.</p>
       <div class="foot-cols">
         <div><span class="label">Showroom</span><ul><li>${ph(D.SITE.address)}</li><li>${ph(D.SITE.city)}</li><li><a href="showroom.html">Horaires &amp; accès</a></li></ul></div>
         <div><span class="label">Contact</span><ul>
@@ -123,7 +123,7 @@
       </div>
     </div>
     <div class="foot-wm" aria-hidden="true">KŌSŌ<span class="sq"></span></div>
-    <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — L'art du carreau</span><span>Carrelage · Pierre · Parquet · Bain · Robinetterie</span><span>Maison de matières</span></div>
+    <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — L'art du carreau</span><span>Carrelage · Pierre · Parquet · Bain · Robinetterie</span><span>Carrelage &amp; salle de bain</span></div>
   </div>`;
   document.body.append(foot);
 

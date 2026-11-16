@@ -631,3 +631,7 @@ dialog.lb::backdrop{background:rgba(14,12,10,.6)}
 .cx figcaption b{font-weight:500;font-size:16px}
 .cx-more{aspect-ratio:1;align-content:space-between;padding:20px;border-radius:6px;background:var(--ink);color:var(--bone)}
 .cx-more .h-3{font-size:clamp(26px,2.4vw,36px)}
+
+.room-ref{color:var(--text-secondary);font-size:.8rem;white-space:nowrap}
+.room-chip b{min-width:0}
+@media (max-width:480px){.room-ref{display:none}}

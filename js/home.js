@@ -20,6 +20,7 @@
     next.loading = 'eager';
     slides.forEach(im => im.classList.toggle('is-on', im === next));
     rn.textContent = next.dataset.room;
+    $('#room-ref').textContent = next.dataset.ref;
     slides[(si + 1) % slides.length].loading = 'eager';
   };
   const run = () => { clearInterval(st); if (!sPaused) st = setInterval(() => show(si + 1), 4500) };
