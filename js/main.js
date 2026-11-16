@@ -33,7 +33,7 @@
   D.img = (dir, f) => `assets/img/${dir}/${f}`;
   /* Photo de marque avec version légère pour mobile */
   D.pic = (f, alt, sizes = '100vw', extra = '') =>
-    `<img src="assets/img/g/${f}" srcset="assets/img/g/s-${f} 800w, assets/img/g/${f} 2400w" sizes="${sizes}" alt="${D.esc(alt)}" loading="lazy" decoding="async" ${extra}>`;
+    `<img src="assets/img/g/${f}" srcset="assets/img/g/s-${f} 1200w, assets/img/g/${f} 2880w" sizes="${sizes}" alt="${D.esc(alt)}" loading="lazy" decoding="async" ${extra}>`;
   D.brand = id => (D.brands || []).find(b => b.id === id);
 
   const ph = v => /^\[.*\]$/.test(v) ? `<span class="todo">${D.esc(v)}</span>` : D.esc(v);
