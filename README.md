@@ -17,7 +17,7 @@ Coordonnées, horaires et e-mail : un seul endroit, `D.SITE` en haut de `js/main
 Tant que `emailHref` est vide, les champs s'affichent en rouge hachuré et le formulaire n'ouvre pas de messagerie.
 
 ## Images
-`assets/img/` reprend toutes les images de la première version : galeries de marques (`g/`, avec versions légères `s-`), 306 textures (`textures/`), rendus de la maison (`tour/`).
+`assets/img/` reprend toutes les images de la première version : galeries de marques (`g/`, avec versions légères `s-`), textures et carreaux (`textures/`).
 Données associées : `js/data.js`.
 
 ## Lancer en local

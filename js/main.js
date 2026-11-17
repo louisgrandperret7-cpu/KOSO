@@ -10,8 +10,8 @@
 
   /* ——— Coordonnées : à compléter ici, une seule fois ——— */
   D.SITE = {
-    address: '[Adresse du showroom]',
-    city: '[Code postal, Ville]',
+    address: '104 rue Saint-Dizier',
+    city: '54000 Nancy',
     phone: '[Téléphone]',
     phoneHref: '',                 // ex. '+33300000000'
     email: '[Adresse e-mail]',
