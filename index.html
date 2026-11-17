@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kōsō — L'art du carreau · Carrelage, pierre, parquet, salle de bain</title>
 <meta name="description" content="Kōsō, l'art du carreau : carrelage, pierre, parquet, salle de bain et robinetterie de 28 maisons italiennes et européennes. Showroom et accompagnement de projet.">
-<meta name="theme-color" content="#1B1815">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kōsō">
 <meta property="og:title" content="Kōsō — L'art du carreau">
@@ -15,20 +15,20 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B1815'/%3E%3Crect x='19' y='19' width='7' height='7' fill='%23E2361B'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Bodoni+Moda:opsz,wght@6..96,400&display=swap">
 <link rel="preload" as="image" href="assets/img/g/mirage-2.jpg">
 <link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Kōsō","alternateName":"KOSO","slogan":"L'art du carreau","description":"Carrelage, pierre, parquet, salle de bain, robinetterie et radiateurs : showroom et accompagnement de projet.","address":{"@type":"PostalAddress","streetAddress":"[À COMPLÉTER]","addressLocality":"[À COMPLÉTER]","addressCountry":"FR"},"telephone":"[À COMPLÉTER]"}
 </script>
 </head>
-<body data-page="accueil" data-hdr="over">
+<body data-page="accueil">
 
 <main id="main" tabindex="-1">
 
-  <!-- ——— Héros : la maison Kōsō en vidéo ——— -->
-  <section class="hero-section" data-hero aria-labelledby="hero-t">
-    <div class="video-container slides" id="slides" aria-hidden="true">
+  <!-- ——— Diaporama pleine largeur ——— -->
+  <section class="slider" aria-label="Ambiances réalisées avec nos collections" aria-roledescription="carrousel">
+    <div class="slides" id="slides">
         <img src="assets/img/g/mirage-2.jpg" srcset="assets/img/g/s-mirage-2.jpg 1200w, assets/img/g/mirage-2.jpg 2880w" sizes="100vw" alt="" data-room="Salon" data-ref="Mirage — ReGea" class="is-on" decoding="async">
         <img src="assets/img/g/listone-giordano-1.jpg" srcset="assets/img/g/s-listone-giordano-1.jpg 1200w, assets/img/g/listone-giordano-1.jpg 2880w" sizes="100vw" alt="" data-room="Cuisine" data-ref="Listone Giordano — Medoc" loading="lazy" decoding="async">
         <img src="assets/img/g/fap-4.jpg" srcset="assets/img/g/s-fap-4.jpg 1200w, assets/img/g/fap-4.jpg 2880w" sizes="100vw" alt="" data-room="Salle de bain" data-ref="FAP Ceramiche — Roma Stone" loading="lazy" decoding="async">
@@ -36,77 +36,67 @@
         <img src="assets/img/g/sant-agostino-4.jpg" srcset="assets/img/g/s-sant-agostino-4.jpg 1200w, assets/img/g/sant-agostino-4.jpg 2880w" sizes="100vw" alt="" data-room="Salle de bain" data-ref="Sant'Agostino — Iki Wood" loading="lazy" decoding="async">
         <img src="assets/img/g/orac-2.jpg" srcset="assets/img/g/s-orac-2.jpg 1200w, assets/img/g/orac-2.jpg 2880w" sizes="100vw" alt="" data-room="Chambre" data-ref="Orac Decor — Lambris" loading="lazy" decoding="async">
         <img src="assets/img/g/listone-giordano-2.jpg" srcset="assets/img/g/s-listone-giordano-2.jpg 1200w, assets/img/g/listone-giordano-2.jpg 2880w" sizes="100vw" alt="" data-room="Salon" data-ref="Listone Giordano — Biscuit, Patricia Urquiola" loading="lazy" decoding="async">
-      <div class="video-overlay"></div>
     </div>
+    <button class="sl-arrow sl-prev" type="button" id="sl-prev" aria-label="Photo précédente"><span data-ic="left"></span></button>
+    <button class="sl-arrow sl-next" type="button" id="sl-next" aria-label="Photo suivante"><span data-ic="right"></span></button>
+    <p class="sl-cap" aria-live="polite"><span id="room-name">Salon</span><span class="sl-ref" id="room-ref">Mirage — ReGea</span></p>
+    <button class="sl-pause" type="button" id="slides-pause" aria-label="Mettre le diaporama en pause"><span data-ic="pause"></span></button>
+  </section>
+  <div class="sl-dots" id="sl-dots" aria-hidden="true"></div>
 
-    <div class="room-chip animate-fade-up" style="animation-delay:.5s"><b id="room-name">Salon</b><span class="room-ref" id="room-ref">Mirage — ReGea</span><button type="button" id="slides-pause" aria-label="Mettre le diaporama en pause"><span data-ic="pause"></span></button></div>
-
-    <div class="hero-content">
-      <div class="text-wrapper">
-        <p class="greeting animate-fade-up" style="animation-delay:.1s">BIENVENUE CHEZ KŌSŌ</p>
-        <h1 id="hero-t" class="main-title animate-fade-up" style="animation-delay:.2s">L'art du <em>carreau</em><span class="sq" aria-hidden="true"></span></h1>
-        <p class="sub-title accent-text-gradient animate-fade-up" style="animation-delay:.3s">Carrelage, pierre, parquet &amp; salle de bain</p>
-        <p class="description animate-fade-up" style="animation-delay:.3s">28 maisons européennes choisies pour leurs finitions et leur dessin, composées comme une architecture intérieure. Du sol au radiateur, un seul interlocuteur.</p>
-        <div class="cta-group animate-fade-up" style="animation-delay:.5s">
-          <a href="carrelage.html" class="btn btn-primary">Voir le carrelage <span data-ic="arrow"></span></a>
-          <a href="contact.html?type=rdv" class="btn btn-outline">Prendre rendez-vous <span data-ic="calendar"></span></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-footer">
-      <div class="footer-left animate-fade-up" style="animation-delay:.5s">
-        <ul class="social-links" id="social-links" aria-label="Réseaux sociaux"></ul>
-        <div class="stats-group">
-          <div class="stat"><span class="stat-num">28</span><span class="stat-label">Maisons<br>européennes</span></div>
-          <span class="stat-line" aria-hidden="true"></span>
-          <div class="stat"><span class="stat-num">16</span><span class="stat-label">Marques<br>de carrelage</span></div>
-          <span class="stat-line" aria-hidden="true"></span>
-          <div class="stat"><span class="stat-num">9</span><span class="stat-label">Marques de<br>salle de bain</span></div>
-        </div>
-      </div>
-
-      <a href="#manifeste" class="scroll-indicator" aria-label="Descendre vers la suite">
-        <span class="mouse"><span class="wheel"></span></span>
-        <span class="scroll-text">Défiler</span>
-      </a>
-
-      <aside class="glass-panel animate-fade-up" style="animation-delay:.5s" aria-label="Showroom">
-        <div class="status"><span class="pulse-dot" aria-hidden="true"></span><span>Showroom &amp; conseil</span></div>
-        <p>Les collections posées en grand, la robinetterie en eau. Venez toucher les finitions avant de choisir.</p>
-        <a href="showroom.html" class="panel-link">Horaires &amp; accès <span data-ic="arrowUp"></span></a>
-      </aside>
-    </div>
+  <!-- ——— Bienvenue ——— -->
+  <section class="intro" aria-labelledby="hero-t">
+    <p class="kicker rv">Bienvenue chez <span class="kn">Kōsō</span></p>
+    <h1 id="hero-t" class="intro-t rv">L'art du carreau</h1>
+    <p class="intro-l rv">Carrelage, pierre, parquet et salle de bain : 28 maisons européennes choisies pour leurs finitions et leur dessin, composées comme une architecture intérieure.</p>
+    <p class="intro-a rv"><a href="carrelage.html" class="btn btn--solid">Voir le carrelage</a><a href="contact.html?type=rdv" class="btn">Prendre rendez-vous</a></p>
   </section>
 
-  <!-- ——— Manifeste ——— -->
-  <section class="sec" id="manifeste" aria-labelledby="manif-t">
+  <!-- ——— Univers ——— -->
+  <section class="sec" aria-labelledby="disc-t">
     <div class="wrap">
-      <div class="manif">
-        <p class="manif-kanji rv" aria-hidden="true">Kōsō<span class="sq"></span><small>L'art du carreau</small></p>
-        <div>
-          <h2 id="manif-t" class="sr">Le manifeste</h2>
-          <p class="manif-t" id="manif-text">Kōsō exprime l'idée d'une pensée qui prend forme : imaginer, composer et donner une âme aux espaces. Finitions, lignes, lumière et objets s'accordent pour créer des intérieurs singuliers, intemporels et profondément personnels.</p>
-          <div class="manif-cols">
-            <p class="copy rv">Nous ne vendons pas des références. Nous composons des accords : une pierre et un bois, un zellige et un laiton brossé, un grand format clair et une robinetterie noire. Chaque projet commence par une écoute et se termine par une pose juste.</p>
-            <p class="copy rv" data-d=".1">Au showroom, les collections sont posées en grand, robinetterie en eau, sous une lumière du jour. On touche, on compare, on repart avec des échantillons pour les voir chez soi.</p>
-          </div>
-        </div>
-      </div>
-      <div class="figures">
-        <div class="fig rv"><b data-count-to="28">28</b><span class="label label--muted">Maisons européennes</span></div>
-        <div class="fig rv" data-d=".08"><b data-count-to="16">16</b><span class="label label--muted">Marques de carrelage</span></div>
-        <div class="fig rv" data-d=".16"><b data-count-to="9">9</b><span class="label label--muted">Marques de salle de bain</span></div>
-        <div class="fig rv" data-d=".24"><b>1</b><span class="label label--muted">Interlocuteur pour tout le projet</span></div>
+      <h2 id="disc-t" class="sec-t rv">Découvrez nos collections</h2>
+      <div class="cards2">
+        <a class="card rv" href="carrelage.html">
+          <span class="card-m"><img src="assets/img/g/mirage-3.jpg" srcset="assets/img/g/s-mirage-3.jpg 1200w, assets/img/g/mirage-3.jpg 2880w" sizes="(min-width:800px) 46vw, 100vw" alt="Terrasse en grès cérame Mirage Elysian Travertini" loading="lazy" decoding="async"></span>
+          <span class="card-c">Carrelage <small>16 marques · grès cérame, zelliges, pierre, terre cuite</small></span>
+        </a>
+        <a class="card rv" data-d=".08" href="salle-de-bain.html">
+          <span class="card-m"><img src="assets/img/g/fap-2.jpg" srcset="assets/img/g/s-fap-2.jpg 1200w, assets/img/g/fap-2.jpg 2880w" sizes="(min-width:800px) 46vw, 100vw" alt="Salle de bain en FAP Ceramiche Gemme" loading="lazy" decoding="async"></span>
+          <span class="card-c">Salle de bain <small>9 marques · meubles, baignoires, douches, robinetterie</small></span>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- ——— Aplat : l'esprit Kōsō ——— -->
+  <section class="band" id="manifeste" aria-labelledby="band-t">
+    <div class="band-in">
+      <p id="band-t" class="band-t rv">KŌSŌ</p>
+      <p class="band-s rv">L'art du carreau</p>
+      <p class="band-l rv">Nous composons des accords : une pierre et un bois, un zellige et un laiton brossé, un grand format clair et une robinetterie noire. Chaque projet commence par une écoute et se termine par une pose juste.</p>
+      <a class="band-a rv" href="showroom.html">Découvrir le showroom</a>
+    </div>
+  </section>
+
+  <!-- ——— Chiffres ——— -->
+  <section class="figs" aria-label="Kōsō en chiffres">
+    <div class="fig rv"><b>28</b><span>Maisons européennes</span></div>
+    <div class="fig rv" data-d=".06"><b>16</b><span>Marques de carrelage</span></div>
+    <div class="fig rv" data-d=".12"><b>9</b><span>Marques de salle de bain</span></div>
+    <div class="fig rv" data-d=".18"><b>1</b><span>Interlocuteur pour tout le projet</span></div>
+  </section>
+
+  <!-- ——— Prendre contact ——— -->
+  <section class="touch" aria-labelledby="touch-t">
+    <h2 id="touch-t" class="sec-t rv">Prendre contact</h2>
+    <p class="intro-l rv">Pour un projet, un rendez-vous au showroom ou un échantillon, écrivez-nous.</p>
+    <p class="intro-a rv"><a class="btn btn--solid" href="contact.html">Nous écrire</a></p>
+  </section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script src="js/home.js"></script>

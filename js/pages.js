@@ -22,7 +22,6 @@
 
   /* Photos d'une marque : la sélection (5 max) ou sa galerie */
   const photos = id => (D.picks && D.picks[id]) || (D.gallery[id] || []).map(g => ({ s: 'g/' + g.f, m: 'g/s-' + g.f, c: g.c })).slice(0, 5);
-  const LAYOUT = { 5: ['big', '', '', '', ''], 4: ['big', 'wide', '', ''], 3: ['big', 'wide', 'wide'], 2: ['big', 'big'], 1: ['full'] };
 
   if (GROUPS[page]) {
     const root = $('#brands'), jump = $('#jump');
@@ -31,9 +30,9 @@
     GROUPS[page].forEach(g => {
       const withPh = g.ids.filter(id => photos(id).length), without = g.ids.filter(id => !photos(id).length);
       html += `<section class="bgroup" aria-labelledby="g-${all.length}">
-        <header class="bgroup-h"><h2 id="g-${all.length}" class="display h-2">${esc(g.t)}</h2><p class="lede">${esc(g.l)}</p></header>`;
+        <header class="bgroup-h"><h2 id="g-${all.length}" class="sec-t">${esc(g.t)}</h2><p class="lede">${esc(g.l)}</p></header>`;
       withPh.forEach(id => {
-        const b = D.brand(id), P = photos(id), L = LAYOUT[P.length];
+        const b = D.brand(id), P = photos(id);
         all.push(id);
         html += `<article class="bsec" id="${id}" aria-labelledby="h-${id}">
           <div class="bsec-h">
@@ -41,9 +40,9 @@
             <p class="copy">${esc(b.line)}</p>
             <p class="bsec-a"><a class="link" href="contact.html?marque=${id}">Voir au showroom <span class="arr">→</span></a></p>
           </div>
-          <div class="mosaic">${P.map((p, i) => `<button type="button" class="m ${L[i] ? 'm-' + L[i] : ''} rv" data-d="${(i * .05).toFixed(2)}" data-b="${id}" data-i="${i}" aria-label="Agrandir : ${esc(b.name)} — ${esc(p.c)}">
-              <img src="assets/img/${i === 0 || L[i] ? p.s : p.m}" ${p.s.startsWith('g/') ? `srcset="assets/img/${p.m} 1200w, assets/img/${p.s} 2880w" sizes="${i === 0 ? '(min-width:900px) 50vw, 100vw' : '(min-width:900px) 25vw, 50vw'}"` : ''} alt="" loading="lazy" decoding="async">
-              <span class="m-c">${esc(p.c)}</span></button>`).join('')}</div>
+          <div class="pc pc-n${P.length}">${P.map((p, i) => `<figure class="pc-i${i === 0 && P.length % 2 ? ' pc-big' : ''} rv" data-d="${(i * .05).toFixed(2)}">
+              <button type="button" class="m" data-b="${id}" data-i="${i}" aria-label="Agrandir : ${esc(b.name)} — ${esc(p.c)}"><img src="assets/img/${p.s}" ${p.s.startsWith('g/') ? `srcset="assets/img/${p.m} 1200w, assets/img/${p.s} 2880w" sizes="${i === 0 ? '(min-width:900px) 62vw, 100vw' : '(min-width:900px) 31vw, 50vw'}"` : ''} alt="" loading="lazy" decoding="async"></button>
+              <figcaption>${esc(p.c)}</figcaption></figure>`).join('')}</div>
         </article>`;
       });
       if (without.length) html += `<div class="also"><p class="label label--muted">Également au showroom</p><ul>${without.map(id => { const b = D.brand(id); all.push(id); return `<li id="${id}"><b>${esc(b.name)}</b><span class="label label--muted">${esc(b.origin)}</span><span>${esc(b.line)}</span></li>` }).join('')}</ul></div>`;
@@ -54,7 +53,7 @@
     if (cx) cx.innerHTML = D.carreaux.map((c, i) => `<figure class="cx rv" data-d="${(i % 4 * .05).toFixed(2)}">
         <div class="cx-m"><img src="assets/img/textures/${esc(c.f)}" alt="Carreau ${esc(c.n)}, ${esc(D.brand(c.b).name)}" loading="lazy" decoding="async"></div>
         <figcaption><b>${esc(c.n)}</b><span class="label label--muted">${esc(D.brand(c.b).name)}</span></figcaption></figure>`).join('');
-    jump.innerHTML = all.map(id => `<a class="chip-f no-dot" href="#${id}">${esc(D.brand(id).name)}</a>`).join('');
+    jump.innerHTML = all.map(id => `<a href="#${id}">${esc(D.brand(id).name)}</a>`).join('');
 
     /* ——— Visionneuse ——— */
     const dlg = $('#lb'), img = $('#lb-img'), cap = $('#lb-cap'), cnt = $('#lb-n');

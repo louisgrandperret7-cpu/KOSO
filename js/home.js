@@ -1,52 +1,33 @@
 /* ==========================================================================
-   KŌSŌ — Accueil
+   KŌSŌ — Accueil : diaporama pleine largeur
    ========================================================================== */
 (function () {
   'use strict';
-  const D = window.KOSO, $ = D.$, $$ = D.$$, esc = D.esc;
-  const G = !!(window.gsap && window.ScrollTrigger) && !D.reduced;
-  const small = () => innerWidth < 760;
-  const cap = f => { for (const [id, list] of Object.entries(D.gallery)) { const g = list.find(x => x.f === f); if (g) return `${D.brand(id)?.name || id} — ${g.c}` } return '' };
-
-  /* ——————————————————————————————————————————————
-     1. Héros : la visite de la maison Kōsō en vidéo
-        (une seule lecture, arrêt sur la dernière image)
-     —————————————————————————————————————————————— */
-  const slides = $$('#slides img'), rn = $('#room-name'), pb = $('#slides-pause');
-  let si = 0, st = null, sPaused = D.reduced;
+  const D = window.KOSO, $ = D.$, $$ = D.$$;
+  const slides = $$('#slides img'), rn = $('#room-name'), rr = $('#room-ref'), pb = $('#slides-pause'), dots = $('#sl-dots');
+  dots.innerHTML = slides.map(() => '<i></i>').join('');
+  let si = 0, st = null, paused = D.reduced;
   const show = i => {
     si = (i + slides.length) % slides.length;
     const next = slides[si];
-    next.loading = 'eager';
+    next.loading = 'eager'; slides[(si + 1) % slides.length].loading = 'eager';
     slides.forEach(im => im.classList.toggle('is-on', im === next));
-    rn.textContent = next.dataset.room;
-    $('#room-ref').textContent = next.dataset.ref;
-    slides[(si + 1) % slides.length].loading = 'eager';
+    $$('i', dots).forEach((d, k) => d.classList.toggle('is-on', k === si));
+    rn.textContent = next.dataset.room; rr.textContent = next.dataset.ref;
   };
-  const run = () => { clearInterval(st); if (!sPaused) st = setInterval(() => show(si + 1), 4500) };
+  const run = () => { clearInterval(st); if (!paused) st = setInterval(() => show(si + 1), 5000) };
   const setPaused = p => {
-    sPaused = p; run();
+    paused = p; run();
     pb.setAttribute('aria-label', p ? 'Relancer le diaporama' : 'Mettre le diaporama en pause');
     pb.innerHTML = D.SVG[p ? 'play' : 'pause'];
   };
-  pb.addEventListener('click', () => setPaused(!sPaused));
+  $('#sl-prev').addEventListener('click', () => { show(si - 1); run() });
+  $('#sl-next').addEventListener('click', () => { show(si + 1); run() });
+  pb.addEventListener('click', () => setPaused(!paused));
+  /* glisser du doigt sur mobile */
+  let x0 = null;
+  $('.slider').addEventListener('touchstart', e => x0 = e.touches[0].clientX, { passive: true });
+  $('.slider').addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { show(si + (dx < 0 ? 1 : -1)); run() } x0 = null });
   document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(st) : run());
-  setPaused(sPaused);
-  const soc = $('#social-links');
-  if (soc) soc.innerHTML = D.SITE.socials.map(([n, ic, h]) => `<li><a href="${h || '#'}" aria-label="${n}"${h ? ' rel="noopener" target="_blank"' : ''}>${D.SVG[ic]}</a></li>`).join('');
-  if (G) gsap.to('.hero-content, .room-chip', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero-section', start: '35% top', end: 'bottom top', scrub: true } });
-
-  /* ——————————————————————————————————————————————
-     2. Manifeste : les mots s'allument au fil du scroll
-     —————————————————————————————————————————————— */
-  const mt = $('#manif-text');
-  mt.innerHTML = mt.textContent.split(/\s+/).map(w => `<span class="mw">${esc(w)}</span>`).join(' ');
-  if (G) gsap.to($$('.mw', mt), { opacity: 1, stagger: .05, ease: 'none', scrollTrigger: { trigger: mt, start: 'top 80%', end: 'bottom 45%', scrub: true } });
-  else $$('.mw', mt).forEach(w => w.style.opacity = 1);
-
-  if (G) $$('[data-count-to]').forEach(el => {
-    const n = +el.dataset.countTo, o = { v: 0 };
-    gsap.to(o, { v: n, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%' }, onUpdate: () => el.textContent = Math.round(o.v) });
-  });
-
+  show(0); setPaused(paused);
 })();
