@@ -1,8 +1,8 @@
 /* ==========================================================================
    KŌSŌ — L'art du carreau
    Direction : galerie de céramiste italien. Fond blanc, encre presque noire,
-   filets noirs fins, géométrique légère (Jost, proche de Futura), logo en
-   capitales à empattements, aucun arrondi, aucune ombre, un aplat bleu nuit.
+   filets noirs fins, géométrique légère (Jost, proche de Futura), logo Kōsō
+   en grotesque grasse, aucun arrondi, aucune ombre, un aplat bleu nuit.
    Seul rappel de couleur Kōsō : le petit carré rouge du logo.
    ========================================================================== */
 :root{
@@ -18,7 +18,7 @@
   --signal-ink:#B02812;
 
   --f:"Jost","Futura","Century Gothic",system-ui,sans-serif;
-  --f-logo:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-logo:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
 
   --g:clamp(16px,2.8vw,40px);
   --hdr:64px;
@@ -68,8 +68,10 @@ a:hover .arr{transform:translateX(3px)}
 /* —— En-tête (défile) + bandeau à cases (collant) —— */
 .hdr{position:relative;z-index:80;background:#fff;border-bottom:1px solid var(--rule)}
 .hdr-in{display:flex;align-items:center;gap:clamp(20px,3vw,48px);height:var(--hdr);padding-left:max(var(--g),env(safe-area-inset-left,0px));padding-right:max(var(--g),env(safe-area-inset-right,0px))}
-.logo{display:inline-flex;align-items:baseline;font-family:var(--f-logo);font-weight:400;font-size:26px;letter-spacing:.14em;line-height:1}
-.logo .sq{width:6px;height:6px;margin-left:2px}
+/* Logo Kōsō : grotesque grasse en minuscules + carré rouge posé sur la ligne de base */
+.logo,.foot-logo,.band-t,.kn{font-family:var(--f-logo);font-weight:700;letter-spacing:-.035em;text-transform:none}
+.logo{display:inline-flex;align-items:baseline;font-size:28px;line-height:1}
+.logo .sq,.foot-logo .sq,.band-t .sq,.kn .sq{width:.24em;height:.24em;margin-left:.1em}
 .nav{display:none;gap:clamp(18px,2vw,30px);margin-right:auto}
 .nav a{position:relative;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:8px 0}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s}
@@ -140,8 +142,8 @@ a:hover .arr{transform:translateX(3px)}
 
 .band{background:var(--night);color:var(--night-ink)}
 .band-in{display:grid;justify-items:center;gap:14px;max-width:1100px;margin-inline:auto;padding:clamp(64px,9vw,128px) max(var(--g),env(safe-area-inset-left,0px));text-align:center}
-.band-t{font-family:var(--f-logo);font-weight:400;font-size:clamp(64px,12vw,176px);letter-spacing:.08em;line-height:.95}
-.band-s{font-family:var(--f-logo);font-size:clamp(24px,2.6vw,38px);font-style:italic}
+.band-t{font-size:clamp(72px,12vw,180px);line-height:1;color:#fff}
+.band-s{font-size:clamp(22px,2.2vw,32px);font-weight:300;letter-spacing:.02em}
 .band-l{max-width:56ch;margin-top:12px;color:#C9D6F3;font-weight:300;font-size:clamp(16px,1.25vw,18px)}
 .band-a{margin-top:18px;color:#fff;font-size:clamp(20px,2vw,28px);font-weight:300;border-bottom:1px solid currentColor;padding-bottom:2px}
 .band-a:hover{color:var(--night-ink)}
@@ -268,8 +270,7 @@ dialog.lb::backdrop{background:#fff}
 /* —— Pied de page —— */
 .foot{border-top:1px solid var(--rule);margin-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
 .foot-in{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 24px;padding:clamp(40px,5vw,64px) max(var(--g),env(safe-area-inset-right,0px)) clamp(32px,4vw,48px) max(var(--g),env(safe-area-inset-left,0px));max-width:1440px;margin-inline:auto;font-size:14px}
-.foot-logo{grid-column:1/-1;font-family:var(--f-logo);font-size:26px;line-height:.95;letter-spacing:.14em}
-.foot-logo .sq{width:6px;height:6px}
+.foot-logo{grid-column:1/-1;font-size:30px;line-height:1}
 .foot-h{font-weight:600;margin-bottom:12px}
 .foot-col li{padding:3px 0;color:var(--muted)}
 .foot-col a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
@@ -283,4 +284,6 @@ dialog.lb::backdrop{background:#fff}
 .rv{opacity:0;transform:translateY(16px)}
 .no-js .rv,.reduced .rv{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-.kn{font-family:var(--f-logo);font-weight:400;letter-spacing:.12em;text-transform:uppercase}
+.kn{font-size:1.15em;letter-spacing:-.02em}
+/* Jost dessine mal « ō » : le nom passe dans la police du logo */
+.ko{font-family:var(--f-logo);letter-spacing:-.01em}
