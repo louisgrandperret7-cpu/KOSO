@@ -31,7 +31,7 @@
   const syncS = () => {
     if (!sEl) return;
     const L = D.samples.list().map(D.tex).filter(Boolean);
-    sEl.innerHTML = L.map(t => `<span><img src="assets/img/textures/${esc(t.f)}" alt="">${esc(D.texName(t))} · ${esc(D.brand(t.b)?.name || '')}<button type="button" data-rm="${esc(t.f)}" aria-label="Retirer ${esc(D.texName(t))}" style="margin-left:4px;font-size:18px;line-height:1;padding:0 4px">×</button></span>`).join('');
+    sEl.innerHTML = L.map(t => `<span><img src="assets/img/t/${esc(t.f)}" alt="">${esc(D.texName(t))} · ${esc(D.brand(t.b)?.name || '')}<button type="button" data-rm="${esc(t.f)}" aria-label="Retirer ${esc(D.texName(t))}" style="margin-left:4px;font-size:18px;line-height:1;padding:0 4px">×</button></span>`).join('');
     sHelp.innerHTML = L.length ? `${L.length}/${D.samples.MAX} — <a class="link" href="materiautheque.html">en ajouter</a>` : `Aucun pour l'instant. <a class="link" href="materiautheque.html">Choisir dans la matériauthèque <span class="arr">→</span></a>`;
   };
   sEl && sEl.addEventListener('click', e => { const b = e.target.closest('[data-rm]'); b && D.samples.toggle(b.dataset.rm) });

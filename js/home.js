@@ -3,7 +3,7 @@
    ========================================================================== */
 (function () {
   'use strict';
-  const D = window.KOSO, $ = D.$, $$ = D.$$;
+  const D = window.KOSO, $ = D.$, $$ = D.$$, esc = D.esc;
   const slides = $$('#slides img'), rn = $('#room-name'), rr = $('#room-ref'), pb = $('#slides-pause'), dots = $('#sl-dots');
   dots.innerHTML = slides.map(() => '<i></i>').join('');
   let si = 0, st = null, paused = D.reduced;
@@ -30,4 +30,26 @@
   $('.slider').addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { show(si + (dx < 0 ? 1 : -1)); run() } x0 = null });
   document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(st) : run());
   show(0); setPaused(paused);
+
+  /* Bandeau de définition qui défile */
+  const mq = $('#marquee');
+  if (mq) {
+    const DEF = ['Kōsō', 'japonais : la conception d’une vision', 'une pensée qui prend forme', 'imaginer, composer, donner une âme aux espaces'];
+    const one = DEF.map(t => `<span>${esc(t)}</span><i></i>`).join('');
+    mq.innerHTML = `<div class="mq-g">${one}</div>`;
+    const w = mq.firstChild.scrollWidth || 900, n = Math.max(1, Math.ceil(innerWidth * 1.25 / w));
+    const grp = `<div class="mq-g">${one.repeat(n)}</div>`;
+    mq.innerHTML = grp + grp;
+    mq.style.animationDuration = Math.round(mq.firstChild.scrollWidth / 55) + 's';
+  }
+
+  /* Les marques, de A à Z */
+  const az = $('#az');
+  if (az && D.brands) {
+    const norm = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/gi, '').toLowerCase();
+    const list = [...D.brands].sort((a, b) => norm(a.name).localeCompare(norm(b.name), 'fr', { numeric: true }));
+    const groups = [];
+    list.forEach(b => { const k = /\d/.test(norm(b.name)[0]) ? '0–9' : norm(b.name)[0].toUpperCase(); const g = groups[groups.length - 1]; (g && g.k === k) ? g.l.push(b) : groups.push({ k, l: [b] }) });
+    az.innerHTML = groups.map(g => `<div class="az-g rv"><p class="az-letter" aria-hidden="true">${g.k}</p>${g.l.map(b => `<a href="${b.page === 'bain' ? 'salle-de-bain' : 'carrelage'}.html#${b.id}"><span class="az-n">${esc(b.name)}</span><span class="az-o">${esc(b.country)}</span></a>`).join('')}</div>`).join('');
+  }
 })();
