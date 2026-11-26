@@ -63,8 +63,7 @@
   const NAV = [
     ['carrelage.html', 'Carrelage', 'carrelage', 'Sols & murs'],
     ['salle-de-bain.html', 'Salle de bain', 'bain', 'Meubles, douches, baignoires'],
-    ['showroom.html', 'Showroom', 'showroom', 'Horaires & adresse'],
-    ['contact.html', 'Contact', 'contact', 'Votre projet']
+    ['showroom.html', 'Showroom', 'showroom', 'Horaires & adresse']
   ];
   /* Icônes dessinées dans la page (aucune bibliothèque externe) */
   const ic = (d, fill) => `<svg viewBox="0 0 24 24" width="1em" height="1em" ${fill ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${d}</svg>`;
@@ -90,21 +89,20 @@
   const X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>';
   D.ICON_X = X;
 
-  const CTX = { accueil: 'Accueil', carrelage: 'Carrelage', bain: 'Salle de bain', showroom: 'Le showroom', contact: 'Contact' };
+  const CTX = { accueil: '', carrelage: 'Carrelage', bain: 'Salle de bain', showroom: 'Le showroom', contact: 'Contact' };
   const hdr = document.createElement('header');
   hdr.className = 'hdr';
   hdr.innerHTML = `<div class="hdr-in">
     <a class="logo" href="index.html" aria-label="Kōsō, accueil">Kōsō<span class="sq" aria-hidden="true"></span></a>
     <nav class="nav" aria-label="Navigation principale">${NAV.map(([h, l, id]) => `<a href="${h}"${page === id ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav>
     <div class="hdr-r">
-      <a class="hdr-ic" href="contact.html" aria-label="Nous contacter">${D.SVG.phone}</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><i aria-hidden="true"></i></button>
     </div></div>`;
   /* Bandeau à cases, collant en haut de l'écran (comme sur les sites de céramistes italiens) */
   const bar = document.createElement('div');
   bar.className = 'subbar';
-  bar.innerHTML = `<a class="subbar-t" href="${page === 'accueil' ? 'carrelage.html' : 'index.html'}">${CTX[page] || 'Kōsō'}</a>
-    <a class="subbar-c" href="contact.html?type=rdv">Prendre rendez-vous</a>
+  bar.innerHTML = `<a class="subbar-t" href="${page === 'accueil' ? 'carrelage.html' : 'index.html'}">${page in CTX ? CTX[page] : 'Kōsō'}</a>
+    <a class="subbar-c" href="contact.html?type=rdv">Info et RDV</a>
     <a class="subbar-c" href="showroom.html">Horaires &amp; adresse</a>`;
   const menu = document.createElement('div');
   menu.className = 'menu'; menu.id = 'menu';

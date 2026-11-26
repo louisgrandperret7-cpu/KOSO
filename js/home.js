@@ -31,18 +31,6 @@
   document.addEventListener('visibilitychange', () => document.hidden ? clearInterval(st) : run());
   show(0); setPaused(paused);
 
-  /* Bandeau de définition qui défile */
-  const mq = $('#marquee');
-  if (mq) {
-    const DEF = ['Kōsō', 'japonais : la conception d’une vision', 'une pensée qui prend forme', 'imaginer, composer, donner une âme aux espaces'];
-    const one = DEF.map(t => `<span>${esc(t)}</span><i></i>`).join('');
-    mq.innerHTML = `<div class="mq-g">${one}</div>`;
-    const w = mq.firstChild.scrollWidth || 900, n = Math.max(1, Math.ceil(innerWidth * 1.25 / w));
-    const grp = `<div class="mq-g">${one.repeat(n)}</div>`;
-    mq.innerHTML = grp + grp;
-    mq.style.animationDuration = Math.round(mq.firstChild.scrollWidth / 55) + 's';
-  }
-
   /* Les marques, de A à Z */
   const az = $('#az');
   if (az && D.brands) {

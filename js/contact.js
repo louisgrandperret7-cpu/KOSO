@@ -6,12 +6,11 @@
 (function () {
   'use strict';
   const D = window.KOSO, $ = D.$, $$ = D.$$, esc = D.esc;
-  const TYPES = ['Rénovation', 'Construction neuve', 'Salle de bain', 'Cuisine', 'Extérieur & terrasse', 'Rendez-vous au showroom', 'Demande d’échantillons', 'Professionnel / architecte'];
-  const PRESET = { rdv: 'Rendez-vous au showroom', sdb: 'Salle de bain', echantillon: 'Demande d’échantillons' };
+  const TYPES = ['Rénovation', 'Construction neuve', 'Salle de bain', 'Salle d’eau', 'Cuisine', 'Extérieur & terrasse', 'Rendez-vous au showroom', 'Professionnel / architecte'];
+  const PRESET = { rdv: 'Rendez-vous au showroom', sdb: 'Salle de bain' };
   const sp = new URLSearchParams(location.search);
   const chosen = new Set();
   if (PRESET[sp.get('type')]) chosen.add(PRESET[sp.get('type')]);
-  if (D.samples.list().length) chosen.add(PRESET.echantillon);
 
   const msg = $('#msg');
   const amb = (D.ambiances || []).find(a => a.id === sp.get('ambiance'));

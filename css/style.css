@@ -71,13 +71,11 @@ a:hover .arr{transform:translateX(3px)}
 .logo,.foot-logo,.intro-t{font-family:var(--f-logo);font-weight:700;letter-spacing:-.035em;text-transform:none}
 .logo{display:inline-flex;align-items:baseline;font-size:28px;line-height:1}
 .logo .sq,.foot-logo .sq,.intro-t .sq{width:.24em;height:.24em;margin-left:.1em}
-.nav{display:none;gap:clamp(18px,2vw,30px);margin-right:auto}
+.nav{display:none;gap:clamp(18px,2vw,30px);margin-left:auto;margin-right:clamp(12px,2vw,28px)}
 .nav a{position:relative;font-family:var(--f-menu);font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:8px 0}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
 .hdr-r{display:flex;align-items:center;gap:6px;margin-left:auto}
-.hdr-ic{display:inline-grid;place-items:center;width:40px;height:40px;font-size:19px}
-.hdr-ic:hover{color:var(--muted)}
 .menu-btn{display:inline-grid;place-items:center;width:44px;height:44px}
 .menu-btn i{position:relative;width:24px;height:14px}
 .menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;transition:transform .35s,top .35s}
@@ -85,7 +83,7 @@ a:hover .arr{transform:translateX(3px)}
 .menu-btn[aria-expanded="true"] i::before{top:6px;transform:rotate(45deg)}
 .menu-btn[aria-expanded="true"] i::after{top:6px;transform:rotate(-45deg)}
 @media (min-width:1000px){.nav{display:flex}.hdr-r{margin-left:0}.menu-btn{display:none}}
-@media (max-width:999px){.hdr{position:sticky;top:0}.hdr-ic{display:none}}
+@media (max-width:999px){.hdr{position:sticky;top:0}}
 
 .subbar{position:sticky;top:0;z-index:70;display:none;align-items:stretch;height:var(--bar);background:#fff;border-bottom:1px solid var(--rule);font-size:13px}
 .subbar-t{display:flex;align-items:center;margin-right:auto;padding-left:max(var(--g),env(safe-area-inset-left,0px));text-decoration:underline;text-underline-offset:4px}
@@ -277,14 +275,6 @@ dialog.lb::backdrop{background:#fff}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
 /* —— Bandeau de définition qui défile —— */
-.marquee{overflow:hidden;border-bottom:1px solid var(--rule);background:#fff}
-.marquee-track{display:flex;width:max-content;animation:mq 46s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.mq-g{display:flex;align-items:center;flex:none}
-.mq-g span{padding:16px 0;font-size:clamp(17px,1.7vw,23px);font-weight:700;letter-spacing:-.025em;white-space:nowrap}
-.mq-g i{width:10px;height:10px;margin:0 clamp(20px,2.4vw,36px);background:var(--signal);flex:none}
-@keyframes mq{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.marquee-track{animation:none}}
 
 /* —— Liste des marques de A à Z —— */
 .az{column-count:1;column-gap:clamp(24px,4vw,64px)}
