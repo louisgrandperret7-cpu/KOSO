@@ -16,6 +16,7 @@
   --signal-ink:#B02812;
 
   --f:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-menu:"Bricolage Grotesque","Inter","Helvetica Neue",Arial,sans-serif;
   --f-logo:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
 
   --g:clamp(16px,2.8vw,40px);
@@ -71,7 +72,7 @@ a:hover .arr{transform:translateX(3px)}
 .logo{display:inline-flex;align-items:baseline;font-size:28px;line-height:1}
 .logo .sq,.foot-logo .sq,.intro-t .sq{width:.24em;height:.24em;margin-left:.1em}
 .nav{display:none;gap:clamp(18px,2vw,30px);margin-right:auto}
-.nav a{position:relative;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:8px 0}
+.nav a{position:relative;font-family:var(--f-menu);font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:8px 0}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
 .hdr-r{display:flex;align-items:center;gap:6px;margin-left:auto}
@@ -97,7 +98,7 @@ a:hover .arr{transform:translateX(3px)}
 .menu{position:fixed;inset:0;z-index:75;background:#fff;display:grid;grid-template-rows:1fr auto;padding:calc(var(--hdr) + env(safe-area-inset-top,0px) + 16px) max(var(--g),env(safe-area-inset-left,0px)) calc(env(safe-area-inset-bottom,0px) + 24px);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
 .menu.is-open{opacity:1;visibility:visible;transition:opacity .3s}
 .menu nav{display:flex;flex-direction:column;justify-content:center;border-top:1px solid var(--rule)}
-.menu nav a{padding:14px 0;border-bottom:1px solid var(--hair);font-size:clamp(28px,8vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.menu nav a{font-family:var(--f-menu);padding:14px 0;border-bottom:1px solid var(--hair);font-size:clamp(28px,8vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
 .menu nav a[aria-current="page"]{font-weight:500}
 .menu-foot{display:grid;gap:4px;color:var(--muted);font-size:14px}
 .hdr.menu-on{position:fixed;inset:0 0 auto 0;z-index:90}
