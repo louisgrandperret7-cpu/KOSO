@@ -38,6 +38,6 @@
     const list = [...D.brands].sort((a, b) => norm(a.name).localeCompare(norm(b.name), 'fr', { numeric: true }));
     const groups = [];
     list.forEach(b => { const k = /\d/.test(norm(b.name)[0]) ? '0–9' : norm(b.name)[0].toUpperCase(); const g = groups[groups.length - 1]; (g && g.k === k) ? g.l.push(b) : groups.push({ k, l: [b] }) });
-    az.innerHTML = groups.map(g => `<div class="az-g rv"><p class="az-letter" aria-hidden="true">${g.k}</p>${g.l.map(b => `<a href="${b.page === 'bain' ? 'salle-de-bain' : 'carrelage'}.html#${b.id}"><span class="az-n">${esc(b.name)}</span><span class="az-o">${esc(b.country)}</span></a>`).join('')}</div>`).join('');
+    az.innerHTML = groups.map(g => `<div class="az-g rv"><p class="az-letter" aria-hidden="true">${g.k}</p>${g.l.map(b => `<a href="${b.page === 'carrelage' ? 'carrelage' : b.page}.html#${b.id}"><span class="az-n">${esc(b.name)}</span></a>`).join('')}</div>`).join('');
   }
 })();

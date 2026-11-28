@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KŌSŌ — pages Carrelage, Salle de bain et Showroom
+   KŌSŌ — pages Carrelage, L’eau, Mobilier et Showroom
    ========================================================================== */
 (function () {
   'use strict';

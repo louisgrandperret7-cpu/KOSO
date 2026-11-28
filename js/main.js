@@ -62,7 +62,8 @@
   const page = document.body.dataset.page || '';
   const NAV = [
     ['carrelage.html', 'Carrelage', 'carrelage', 'Sols & murs'],
-    ['salle-de-bain.html', 'Salle de bain', 'bain', 'Meubles, douches, baignoires'],
+    ['eau.html', 'L’eau', 'eau', 'Douches, baignoires, robinetterie'],
+    ['mobilier.html', 'Mobilier', 'mobilier', 'Meubles et radiateurs'],
     ['showroom.html', 'Showroom', 'showroom', 'Horaires & adresse']
   ];
   /* Icônes dessinées dans la page (aucune bibliothèque externe) */
@@ -89,7 +90,7 @@
   const X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>';
   D.ICON_X = X;
 
-  const CTX = { accueil: '', carrelage: 'Carrelage', bain: 'Salle de bain', showroom: 'Le showroom', contact: 'Contact' };
+  const CTX = { accueil: '', carrelage: 'Carrelage', eau: 'L’eau', mobilier: 'Mobilier', showroom: 'Le showroom', contact: 'Contact' };
   const hdr = document.createElement('header');
   hdr.className = 'hdr';
   hdr.innerHTML = `<div class="hdr-in">
@@ -98,19 +99,12 @@
     <div class="hdr-r">
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><i aria-hidden="true"></i></button>
     </div></div>`;
-  /* Bandeau à cases, collant en haut de l'écran (comme sur les sites de céramistes italiens) */
-  const bar = document.createElement('div');
-  bar.className = 'subbar';
-  bar.innerHTML = `<a class="subbar-t" href="${page === 'accueil' ? 'carrelage.html' : 'index.html'}">${page in CTX ? CTX[page] : 'Kōsō'}</a>
-    <a class="subbar-c" href="contact.html?type=rdv">Info et RDV</a>
-    <a class="subbar-c" href="showroom.html">Horaires &amp; adresse</a>`;
   const menu = document.createElement('div');
   menu.className = 'menu'; menu.id = 'menu';
   menu.setAttribute('role', 'dialog'); menu.setAttribute('aria-modal', 'true'); menu.setAttribute('aria-label', 'Menu');
   menu.innerHTML = `<nav aria-label="Menu mobile">${[['index.html', 'Accueil', 'accueil'], ...NAV].map(([h, l, id]) => `<a href="${h}"${page === id ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav>
     <div class="menu-foot"><span>${ph(D.SITE.address)}</span><span>${ph(D.SITE.city)}</span><span>${ph(D.SITE.phone)}</span></div>`;
   document.body.prepend(menu);
-  document.body.prepend(bar);
   document.body.prepend(hdr);
   const skip = document.createElement('a'); skip.className = 'skip'; skip.href = '#main'; skip.textContent = 'Aller au contenu';
   document.body.prepend(skip);
@@ -127,7 +121,7 @@
       <li>${D.SITE.emailHref ? `<a href="mailto:${D.SITE.emailHref}">${D.esc(D.SITE.email)}</a>` : ph(D.SITE.email)}</li></ul></div>
     <div class="foot-col foot-soc"><p class="foot-h">Suivez-nous</p><div class="socials">${soc}</div></div>
   </div>
-  <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — Showroom à Nancy</span><span>Carrelage · Parquet · Salle de bain</span></div>`;
+  <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — Showroom à Nancy</span><span>Carrelage · L’eau · Mobilier</span></div>`;
   document.body.append(foot);
 
   /* Champs [data-site] dans les pages */
