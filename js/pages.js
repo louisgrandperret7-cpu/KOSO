@@ -9,7 +9,7 @@
   /* Marques de la page, dans l'ordre alphabétique, rangées par famille */
   const norm = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/gi, '').toLowerCase();
   const cmp = (a, b) => norm(a.name).localeCompare(norm(b.name), 'fr', { numeric: true });
-  const photos = b => (b.ph || []).map(p => ({ s: `b/${b.id}-${p.n}.jpg`, m: `b/s-${b.id}-${p.n}.jpg`, w: p.w || 2400, mw: p.mw || 1200, c: p.c }));
+  const photos = b => (b.ph || []).map(p => ({ s: `b/${b.id}-${p.n}.jpg`, m: `b/s-${b.id}-${p.n}.jpg`, x: `b/m-${b.id}-${p.n}.jpg`, w: p.w || 2400, mw: p.mw || 1200, mm: p.mm || 2400, c: p.c }));
   D.photosOf = photos;
 
   if (D.groups && D.groups[page]) {
@@ -30,7 +30,7 @@
             <p class="bsec-a"><a class="link" href="contact.html?marque=${b.id}">Voir au showroom <span class="arr">→</span></a></p>
           </div>
           <div class="pc pc-n${P.length}">${P.map((p, i) => `<figure class="pc-i${i === 0 && P.length % 2 ? ' pc-big' : ''} rv" data-d="${(i * .05).toFixed(2)}">
-              <button type="button" class="m" data-b="${b.id}" data-i="${i}" aria-label="Agrandir : ${esc(b.name)} — ${esc(p.c)}"><img src="assets/img/${p.s}" srcset="assets/img/${p.m} ${p.mw}w, assets/img/${p.s} ${p.w}w" sizes="${i === 0 && P.length % 2 ? '(min-width:900px) 62vw, 100vw' : '(min-width:900px) 31vw, 50vw'}" alt="" loading="lazy" decoding="async"></button>
+              <button type="button" class="m" data-b="${b.id}" data-i="${i}" aria-label="Agrandir : ${esc(b.name)} — ${esc(p.c)}"><img src="assets/img/${p.s}" srcset="assets/img/${p.m} ${p.mw}w, assets/img/${p.x} ${p.mm}w, assets/img/${p.s} ${p.w}w" sizes="${i === 0 && P.length % 2 ? '(min-width:900px) 62vw, 100vw' : '(min-width:900px) 31vw, 50vw'}" alt="" loading="lazy" decoding="async"></button>
               <figcaption>${esc(p.c)}</figcaption></figure>`).join('')}</div>
         </article>`;
       });
