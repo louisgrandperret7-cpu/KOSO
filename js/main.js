@@ -62,7 +62,7 @@
   const page = document.body.dataset.page || '';
   const NAV = [
     ['carrelage.html', 'Carrelage', 'carrelage', 'Sols & murs'],
-    ['robinetterie.html', 'Robinetterie', 'robinetterie', 'Douches, baignoires, robinetterie'],
+    ['eau.html', 'L’eau', 'eau', 'Douches, baignoires, robinetterie'],
     ['mobilier.html', 'Mobilier', 'mobilier', 'Meubles et radiateurs'],
     ['showroom.html', 'Showroom', 'showroom', 'Horaires & adresse']
   ];
@@ -90,7 +90,7 @@
   const X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>';
   D.ICON_X = X;
 
-  const CTX = { accueil: '', carrelage: 'Carrelage', robinetterie: 'Robinetterie', mobilier: 'Mobilier', showroom: 'Le showroom', contact: 'Contact' };
+  const CTX = { accueil: '', carrelage: 'Carrelage', eau: 'L’eau', mobilier: 'Mobilier', showroom: 'Le showroom', contact: 'Contact' };
   const hdr = document.createElement('header');
   hdr.className = 'hdr';
   hdr.innerHTML = `<div class="hdr-in">
@@ -121,7 +121,7 @@
       <li>${D.SITE.emailHref ? `<a href="mailto:${D.SITE.emailHref}">${D.esc(D.SITE.email)}</a>` : ph(D.SITE.email)}</li></ul></div>
     <div class="foot-col foot-soc"><p class="foot-h">Suivez-nous</p><div class="socials">${soc}</div></div>
   </div>
-  <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — Showroom à Nancy</span><span>Carrelage · Robinetterie · Mobilier</span></div>`;
+  <div class="foot-base"><span>© ${new Date().getFullYear()} Kōsō — Showroom à Nancy</span><span>Carrelage · L’eau · Mobilier</span></div>`;
   document.body.append(foot);
 
   /* Champs [data-site] dans les pages */
